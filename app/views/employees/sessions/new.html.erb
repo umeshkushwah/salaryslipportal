@@ -1,0 +1,42 @@
+<!-- <div class="form-bottom"> 
+  <form role="form" action="" method="post" class="login-form"> 
+    <div class="form-group"> 
+      <label class="sr-only" for="form-username">Username</label> 
+      <input type="text" name="form-username" placeholder="Username..." class="form-username form-control" id="form-username"> 
+    </div> 
+    <div class="form-group"> 
+      <label class="sr-only" for="form-password">Password</label> 
+      <input type="password" name="form-password" placeholder="Password..." class="form-password form-control" id="form-password"> 
+    </div> 
+    <button type="submit" class="btn">Sign in!</button> 
+  </form> 
+</div>
+
+ -->
+
+
+<div class = "form-bottom">
+<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <div class="form-group">
+    <%= f.label :email %><br />
+    <%= f.email_field :email, autofocus: true %>
+  </div>
+
+  <div class = "form-group">
+    <%= f.label :password %><br />
+    <%= f.password_field :password, autocomplete: "off" %>
+  </div>
+
+  <% if devise_mapping.rememberable? -%>
+    <div class="field">
+      <%= f.check_box :remember_me %>
+      <%= f.label :remember_me %>
+    </div>
+  <% end -%>
+
+  <div class="actions">
+    <%= f.submit "Log in" %>
+  </div>
+<% end %>
+
+<%= render "devise/shared/links" %>
