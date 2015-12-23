@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
-  
 
-  devise_for :employees
+  devise_for :employees, :controllers => {
+    registrations: "employees/registrations",
+    confirmations: "employees/confirmations",
+    sessions: "employees/sessions",
+    passwords: "employees/passwords"
+  }
   get 'home/index'
   #devise_for :employees, controllers: { sessions: "employees/sessions" }
 
@@ -9,8 +13,10 @@ Rails.application.routes.draw do
   #root to: "home#index"
 
   devise_scope :employee do
-    root to: "devise/sessions#new"
+    root to: "employees/sessions#new"
   end
+
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

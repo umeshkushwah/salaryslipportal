@@ -1,6 +1,7 @@
 class CreateOrgnizations < ActiveRecord::Migration
   def change
     create_table :orgnizations do |t|
+      t.string :name
       t.string :city
       t.integer :phone
       t.text :address

@@ -5,3 +5,7 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+#
+#
+ Orgnization.create(name: "GrepRuby", city: "Indore", phone: 07312363363, address: "Tower 61, 1st floor,Bhanwarkuaa", state: "Madhya Pradesh", country: "India", pin_code: 452001)
+
