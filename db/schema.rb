@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151222140149) do
+ActiveRecord::Schema.define(version: 20151224062039) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,9 +38,10 @@ ActiveRecord::Schema.define(version: 20151222140149) do
     t.string   "degignation"
     t.string   "gender"
     t.date     "date_of_joining"
-    t.integer  "orgnization_id"
+    t.integer  "organization_id"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.string   "password"
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"
@@ -51,9 +52,12 @@ ActiveRecord::Schema.define(version: 20151222140149) do
     t.datetime "last_sign_in_at"
     t.inet     "current_sign_in_ip"
     t.inet     "last_sign_in_ip"
-    t.string   "password"
+    t.string   "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
   end
 
+  add_index "employees", ["confirmation_token"], name: "index_employees_on_confirmation_token", unique: true, using: :btree
   add_index "employees", ["email"], name: "index_employees_on_email", unique: true, using: :btree
   add_index "employees", ["reset_password_token"], name: "index_employees_on_reset_password_token", unique: true, using: :btree
 
@@ -64,7 +68,7 @@ ActiveRecord::Schema.define(version: 20151222140149) do
     t.datetime "updated_at",  null: false
   end
 
-  create_table "orgnizations", force: :cascade do |t|
+  create_table "organizations", force: :cascade do |t|
     t.string   "name"
     t.string   "city"
     t.integer  "phone"

@@ -6,11 +6,20 @@ Rails.application.routes.draw do
     sessions: "employees/sessions",
     passwords: "employees/passwords"
   }
-  get 'home/index'
-  #devise_for :employees, controllers: { sessions: "employees/sessions" }
 
+  resources :admin_dashboard, only: [:index, :destroy] do
+    member do 
+      post :confirm_employee
+      get :create_salary_slip
+      post :save_salary_slip
+    end  
+  end
 
-  #root to: "home#index"
+  resources :employees do
+    resources :salary_slip, only: [:index, :new, :create]
+  end
+
+  resources :employees_dashboard, only: [:index] 
 
   devise_scope :employee do
     root to: "employees/sessions#new"

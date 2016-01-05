@@ -1,0 +1,47 @@
+<div id="page-wrapper">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-12">
+        <h1 class="page-header">
+          Admin Dashboard
+          <small>GrepRuby Webtech Pvt Ltd</small>
+        </h1>
+         <% if flash[:notice] %>
+            <div class="notice"><%= flash[:notice] %></div>
+          <% end %>
+        <ol class="breadcrumb">
+          <li>
+            <i class="fa fa-dashboard"></i>  
+            <%= link_to "Show all employees", admin_dashboard_index_path %>
+          </li>
+          <li>
+            <i class="fa fa-dashboard"></i>  
+            <%= link_to "Edit information", edit_employee_registration_path %>
+          </li>
+        </ol>
+        <div class="table-responsive">   
+          <table class="table table-bordered table-hover">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Confirmed</th>
+                <th>Delete</th>
+                <th>Salary Slip Info</th>
+              </tr>
+            </thead>            
+            <% @employees.each do |employee| %>
+              <tr>
+                <td><%= employee.get_full_name %></td>
+                <td><%= employee.email %></td>
+                <td><%= link_to_unless(employee.confirmed?, "Confirmed", confirm_employee_admin_dashboard_path(employee.id), :method=> :post)%></td>
+                <td><%= link_to "Delete", admin_dashboard_path(employee.id), :method=> :delete %></td>
+                <td><%= link_to "Salary Slip", employee_salary_slip_index_path(employee.id) %></td>
+              </tr>
+            <% end %>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
