@@ -1,0 +1,23 @@
+<div class="panel-heading"><%= @conversation.subject %></div>
+  <div class="panel-body">
+    <div class="messages">
+      <i>Conversation started at: <%= @conversation.receipts_for(current_employee).first.message.created_at.strftime("%-d %B %Y, %H:%M:%S") %></i></br></br>
+      <% @conversation.receipts_for(current_employee).each do |receipt| %>
+        <% message = receipt.message %>
+
+        <% unless message.sender.nil? %>
+            <b><%= message.sender.full_name %></b>
+        <% else %>
+           Unknwon: 
+        <% end %>
+
+        <%= message.body %></br>
+      <% end %>
+    </div>
+  </div>
+  <%= form_tag reply_conversation_path(@conversation), remote: true, method: :post do %>
+  <div class="form-group">
+    <%= text_area_tag 'body', nil, cols: 3, class: 'form-control', placeholder: 'Type something...', required: true %>
+  </div>
+  <%= submit_tag "Send Message", class: 'btn btn-primary' %>
+<% end %>

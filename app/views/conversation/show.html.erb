@@ -1,0 +1,25 @@
+<div id="page-wrapper">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-12">
+        <h1 class="page-header">
+          Message Conversations
+          <small>GrepRuby Webtech Pvt Ltd</small>
+        </h1>
+        <% if flash[:notice] %>
+          <div class="notice"><%= flash[:notice] %></div>
+        <% end %>
+        <ol class="breadcrumb">
+          <li class="active">
+            <%= link_to " Back", :back ,class: "glyphicon glyphicon-share-alt" %>
+          </li>
+        </ol>
+        <div class="panel panel-default">
+          <div id="send_message">
+            <%= render 'send_message' %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

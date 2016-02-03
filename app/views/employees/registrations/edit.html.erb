@@ -7,7 +7,7 @@
         </h1>
         <ol class="breadcrumb">
           <li class="active">
-            <i class="fa fa-edit"></i> <%= link_to "Back", :back %>
+            <%= link_to " Back", :back, class: "glyphicon glyphicon-share-alt" %>
           </li>
         </ol>
       </div>
@@ -39,15 +39,13 @@
             <%= f.text_field :mobile, class: "form-control" %></br>
 
             <%= f.label :date_of_birth %>
-            <%= f.text_field :dob, class: "form-control" %></br>
+            <%= f.text_field :dob, class: "form-control", placeholder: "dd-mm-yyyy" %></br></br>
 
-            <label>Gender </label>&nbsp
-            <label class="radio-inline">
-              <input type="radio" name="gender" id="optionsRadiosInline1" value="male" checked>Male
-            </label>
-            <label class="radio-inline">
-              <input type="radio" name="gender" id="optionsRadiosInline2" value="female">Female
-            </label></br></br>
+            <%= f.label :gender %>&nbsp&nbsp
+            <%= f.radio_button :gender, 'male', :checked => true %> 
+            <%= f.label :gender, 'male' %>
+            <%= f.radio_button :gender, 'female' %>
+            <%= label :gender, 'female' %></br></br>
 
             <%= f.label :degignation %>
             <%= f.text_field :degignation, class: "form-control" %></br>

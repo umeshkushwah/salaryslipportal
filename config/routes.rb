@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     passwords: "employees/passwords"
   }
 
-  resources :admin_dashboard, only: [:index, :destroy] do
+  resources :admin_dashboard, only: [:index, :destroy, :show] do
     member do 
       post :confirm_employee
       get :create_salary_slip
@@ -16,15 +16,32 @@ Rails.application.routes.draw do
   end
 
   resources :employees do
-    resources :salary_slip, only: [:index, :new, :create]
+    resources :salary_slip, only: [:index, :new, :create, :show, :destroy] do
+      member do
+        get :show_slip
+      end
+    end
+    resources :bank_detail, only: [:new, :create, :edit, :update, :index, :show]
   end
 
-  resources :employees_dashboard, only: [:index] 
+  resources :organizations, only: [:edit, :update, :show]
+
+  resources :employees_dashboard, only: [:index, :show]
 
   devise_scope :employee do
     root to: "employees/sessions#new"
   end
 
+  resources :conversation, only: [:index, :show, :destroy] do
+    member do
+      post :reply, :restore, :mark_as_read
+    end
+    collection do
+      delete :empty_trash
+    end
+  end
+
+  resources :messages, only: [:new, :create]
 
 
   # The priority is based upon order of creation: first created -> highest priority.

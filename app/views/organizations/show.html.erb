@@ -1,0 +1,57 @@
+<div id="page-wrapper">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-12">
+        <h1 class="page-header">
+          Organization Information
+        </h1>
+        <ol class="breadcrumb">
+          <li class="active">
+            <%= link_to " Back", :back ,class: "glyphicon glyphicon-share-alt" %>
+          </li>
+        </ol>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-6">
+      <%= form_for(@current_org, url: "#") do |f| %>
+        <div class="table-responsive"> 
+          <table class="table table-bordered table-hover table-striped">
+          <p>
+              <%= image_tag(@current_org.logo_url) if @current_org.logo? %>
+          </p>
+            <tr>
+              <td><%= f.label :organization_name %>&nbsp&nbsp</td>
+              <td><%= @current_org.name %></td>
+            </tr>
+            <tr>
+              <td><%= f.label :address %></td>
+              <td><%= @current_org.address %></td>
+            </tr>
+            <tr>
+              <td><%= f.label :domain_name %></td>
+              <td><%= @current_org.domain %></td>
+            </tr>
+            <tr>
+              <td><%= f.label :city %></td>
+              <td><%= @current_org.city %></td>
+            </tr>
+            <tr>
+              <td><%= f.label :state %></td>
+              <td><%= @current_org.state %></td>
+            </tr>
+            <tr>
+              <td><%= f.label :pin_code %></td>
+              <td><%= @current_org %></td>
+            </tr>
+            <tr>
+              <td><%= f.label :phone %></td>
+              <td><%= @current_org.phone %></td>
+            </tr>
+          </table>
+        </div>
+        <% end %>
+       </div>
+     </div>
+   </div>
+ </div>

@@ -1,0 +1,87 @@
+<div id="page-wrapper">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-12">
+        <h1 class="page-header">
+          Salary Slip
+        </h1>
+        <ol class="breadcrumb">
+          <li class="active">
+            <i class="fa fa-edit"></i> <%= link_to "Home", admin_dashboard_index_path %>
+          </li>
+          <li class="active">
+            <i class="fa fa-edit"></i> <%= link_to "Salary Slip Home", employee_salary_slip_index_path %>
+          </li>
+          <li class="active">
+            <i class="fa fa-edit"></i> <%= link_to "Back", :back  %>
+          </li>
+        </ol>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-6">
+        <%= form_for(@salary_info, url:  "#", html: { method: :post }) do |f| %>
+          <div class="table-responsive"> 
+            <table class="table table-bordered table-hover table-striped">
+            <p>
+                <%= image_tag(@current_org.logo_url) if @current_org.logo? %>
+            </p>
+              <tr>
+                <td><%= f.label :employee_name %>&nbsp&nbsp</td>
+                <td><%= @employee.full_name %></td>
+              </tr>
+              <tr>
+                <td><%= f.label :employee_no %></td>
+                <td><%= @employee.id %></td>
+              </tr>
+              <tr>
+                <td><%= f.label :email %></td>
+                <td><%= @employee.email %></td>
+              </tr>
+              <tr>
+                <td><%= f.label :address %></td>
+                <td><%= @employee.address %></td>
+              </tr>
+              <tr>
+                <td><%= f.label :mobile %></td>
+                <td><%= @employee.mobile %></td>
+              </tr>
+              <tr>
+                <td><%= f.label :basic %></td>
+                <td><%= @salary_info.basic %></td>
+              </tr>
+              <tr>
+                <td><%= f.label :hra %></td>
+                <td><%= @salary_info.hra %></td>
+              </tr>
+              <tr>
+                <td><%= f.label :month_and_year %></td>
+                <td><%= @salary_info.month %></td>
+              </tr>
+              <tr>
+                <td><%= f.label :provident_fund %></td>
+                <td><%= @salary_info.provident_fund %></td>
+              </tr>
+              <tr>
+                <td><%= f.label :proffesional_tax %></td>
+                <td><%= @salary_info.proffesional_tax %></td>
+              </tr>
+              <tr>
+                <td><%= f.label :gross_earning %></td>
+                <td><%= @salary_info.gross_earning %></td>
+              </tr>
+              <tr>
+                <td><%= f.label :gross_deduction %></td>
+                <td><%= @salary_info.gross_deduction %></td>
+              </tr>
+              <tr>
+                <td><%= f.label :net_pay %></td>
+                <td><%= @salary_info.net_pay %></td>
+              </tr>
+            </table>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

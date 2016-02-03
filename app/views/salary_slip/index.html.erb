@@ -1,0 +1,27 @@
+<div id="page-wrapper">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-12">
+        <h1 class="page-header">
+          Salary Slip Information
+          <small>GrepRuby Webtech Pvt Ltd</small>
+        </h1>
+        <% if flash[:notice] %>
+        <div class="notice"><%= flash[:notice] %></div>
+        <% end %>
+        <ol class="breadcrumb">
+          <li>
+            <%= link_to " Home", admin_dashboard_index_path, class: "glyphicon glyphicon-home" %>
+          </li>
+          <li>
+            <i class="fa fa-dashboard"></i>  
+            <%= link_to "Generate Salary slip", new_employee_salary_slip_path %>
+          </li>
+        </ol>
+        <div id="salary_index"> 
+          <%= render 'salary_index' %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

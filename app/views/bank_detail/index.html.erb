@@ -1,0 +1,46 @@
+<div id="page-wrapper">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-12">
+        <h1 class="page-header">
+          Bank Details Informations <small><%= @employee.full_name %></small>
+        </h1>
+        <ol class="breadcrumb">
+          <li class="active">
+            <%= link_to "Home", admin_dashboard_index_path %>
+          </li>
+          <li class="active">
+            <%= link_to_if(@bank_detail.nil?, "Create Bank Info", new_employee_bank_detail_path) %>
+          </li>
+          <li class="active">
+            <i class="fa fa-edit"></i> <%= link_to "Back", :back %>
+          </li>
+        </ol>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-6">
+        <div class="table-responsive">   
+          <table class="table table-bordered table-hover">
+            <thead>
+              <tr>
+                <th>Bank Name</th>
+                <th>Account No</th>
+                <th>Edit</th>
+                <th>View</th>
+              </tr>
+            </thead>
+            <% unless @bank_detail.nil? %>            
+              <tr>
+                <td><%= @bank_detail.bank_name %></td>
+                <td><%= @bank_detail.account_number %></td>
+                <td><%= link_to "Edit Detail", edit_employee_bank_detail_path(@employee.id, @bank_detail.id) %></td>
+                <td><%= link_to "View Detail", employee_bank_detail_path(@employee.id, @bank_detail.id)%></td>
+              </tr>
+            <% end %>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

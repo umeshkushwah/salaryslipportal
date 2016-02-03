@@ -1,10 +1,8 @@
 class Employees::RegistrationsController < Devise::RegistrationsController
   before_action :find_organization, only: [:create]
+  before_action :initialize_organization, only: [:edit, :update]
   layout :set_layout
-  def new
-    super
-  end
-
+  
   def create
     build_resource(sign_up_params.merge(organization_id: @organization.id))
     resource.skip_confirmation_notification!
@@ -34,7 +32,7 @@ class Employees::RegistrationsController < Devise::RegistrationsController
     @organization = Organization.where("domain = ?", request.domain).take
     if @organization.blank?
       flash[:notice] = "You don't have access to the requested url"
-      redirect_to(action: 'new') 
+      redirect_to new_employee_registration_path 
     end
   end
 
@@ -48,9 +46,17 @@ class Employees::RegistrationsController < Devise::RegistrationsController
 
   def set_layout
     if ['edit', 'update'].include? params[:action]
-      'employees'
+      if current_employee.is_admin?
+        'admin'
+      else
+        'employees'
+      end
     else
       'application'
     end
+  end
+
+  def initialize_organization    
+    @current_org = current_employee.organization
   end
 end

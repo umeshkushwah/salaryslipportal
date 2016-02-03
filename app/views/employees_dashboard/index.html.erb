@@ -3,18 +3,34 @@
     <div class="row">
       <div class="col-lg-12">
         <h1 class="page-header">
-          Employees Dashboard
+          Salary Slip Information
           <small>GrepRuby Webtech Pvt Ltd</small>
         </h1>
         <% if flash[:notice] %>
-          <div class="notice"><%= flash[:notice] %></div>
+        <div class="notice"><%= flash[:notice] %></div>
         <% end %>
         <ol class="breadcrumb">
-          <li>
-            <i class="fa fa-dashboard"></i>  
-            <%= link_to "Edit information", edit_employee_registration_path %>
+          <li>  
+            <%= link_to " Home", employees_dashboard_path(current_employee.id), class: "glyphicon glyphicon-home" %>
           </li>
         </ol>
+        <div class="table-responsive">   
+          <table class="table table-bordered table-hover">
+            <thead>
+              <tr>
+                <th>Month</th>
+                <th>Salary Slip</th>
+              </tr>
+            </thead>            
+            <% @salary_infos.each do |s| %>
+              <tr>
+                <td><%= s.month %></td>
+                <td><%= link_to " View", show_slip_employee_salary_slip_path(s.employee_id,s.id), class: "glyphicon glyphicon-file" %></td>
+              </tr>
+            <% end %>
+          </table>
+          <%= will_paginate @salary_infos %>
+        </div>
       </div>
     </div>
   </div>

@@ -1,0 +1,23 @@
+<div id="page-wrapper">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-12">
+        <h1 class="page-header">
+          Employees Dashboard
+          <small>GrepRuby Webtech Pvt Ltd</small>
+        </h1>
+        <% if flash[:notice] %>
+          <div class="notice"><%= flash[:notice] %></div>
+        <% end %>
+        <ol class="breadcrumb">
+          <li> 
+            <%= link_to " view salary slips", employees_dashboard_index_path, class: "glyphicon glyphicon-th-list" %>
+          </li>
+          <li> 
+            <%= link_to " Edit information", edit_employee_registration_path, class: "glyphicon glyphicon-pencil" %>
+          </li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>

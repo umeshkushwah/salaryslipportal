@@ -1,0 +1,19 @@
+<div class="table-responsive">   
+  <table class="table table-bordered table-hover">
+    <thead>
+      <tr>
+        <th>Month</th>
+        <th>Salary Slip</th>
+        <th>Delete</th>
+      </tr>
+    </thead>            
+    <% @salary_infos.each do |s| %>
+      <tr>
+        <td><%= s.month %></td>
+        <td><%= link_to " View", employee_salary_slip_path(s.employee_id, s.id), class: "glyphicon glyphicon-file" %></td>
+        <td><%= link_to " Delete", employee_salary_slip_path(s.employee_id, s.id), :method=> :delete, class: "glyphicon glyphicon-trash", :remote => true, data: {confirm: 'Are you sure you want to delete?'} %></td>
+      </tr>
+    <% end %>
+  </table>
+  <%= will_paginate @salary_infos %>
+</div>

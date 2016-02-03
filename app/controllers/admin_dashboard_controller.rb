@@ -1,18 +1,19 @@
 class AdminDashboardController < BaseController
-  layout "admin"
-  before_filter :find_employee, except: [:index]
-  before_filter :authenticate_admin
 
-  def index
-    @employees = @current_org.employees
-  end
+  layout "admin"
+  
+  before_action :find_employee, except: [:index]
+  before_action :authenticate_admin
+  before_action :get_employee_index, only: [:index, :destroy]
 
   def destroy
-    if @employee.destroy 
-      flash[:notice] = "Employee was deleted successfully"
-      redirect_to admin_dashboard_index_path
+    if @employee.destroy
+      respond_to do |format|
+        format.js{ flash.now[:notice] = "Employee was deleted successfully" }
+        format.html
+      end 
     else
-      employee.errors.full_messages.join("/n")
+      flash[:error] = @employee.errors.full_messages
       render :index
     end
   end
@@ -24,6 +25,7 @@ class AdminDashboardController < BaseController
   end
 
   private
+
   def find_employee
     @employee =  @current_org.employees.where(id: params[:id]).take
     if @employee.blank?
@@ -35,7 +37,11 @@ class AdminDashboardController < BaseController
   def authenticate_admin    
     unless current_employee.is_admin?
       flash[:notice] = "You don't have access to the requested url"
-      redirect_to home_index_path
+      redirect_to employees_dashboard_path(current_employee.id)
     end    
+  end
+
+  def get_employee_index
+    @employees = @current_org.employees.paginate(:page => params[:page], :per_page => 9)
   end
 end

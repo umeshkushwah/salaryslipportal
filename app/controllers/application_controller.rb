@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base  
+
   protect_from_forgery
   skip_before_action :verify_authenticity_token
 
@@ -6,7 +7,7 @@ class ApplicationController < ActionController::Base
     if resource.is_admin?
       admin_dashboard_index_path
     else
-      employees_dashboard_index_path
+      employees_dashboard_path(current_employee.id)
     end
   end
 end
