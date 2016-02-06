@@ -4,7 +4,7 @@ class AdminDashboardController < BaseController
   
   before_action :find_employee, except: [:index]
   before_action :authenticate_admin
-  before_action :get_employee_index, only: [:index, :destroy]
+  before_action :get_employees, only: [:index, :destroy]
 
   def destroy
     if @employee.destroy
@@ -25,7 +25,7 @@ class AdminDashboardController < BaseController
   end
 
   private
-
+  
   def find_employee
     @employee =  @current_org.employees.where(id: params[:id]).take
     if @employee.blank?
@@ -40,8 +40,8 @@ class AdminDashboardController < BaseController
       redirect_to employees_dashboard_path(current_employee.id)
     end    
   end
-
-  def get_employee_index
+  
+  def get_employees
     @employees = @current_org.employees.paginate(:page => params[:page], :per_page => 9)
   end
 end
