@@ -13,13 +13,10 @@ class OrganizationsController < BaseController
       redirect_to edit_organization_path
     end
   end
-
-  def show
-  end
-
+  
   private
   
   def update_params
-      params.require(:organization).permit!
+    params.require(:organization).permit(:name, :address, :domain, :city, :state, :pin_code, :phone, :logo)
   end
 end

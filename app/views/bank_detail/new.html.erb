@@ -14,7 +14,8 @@
     </div>
     <div class="row">
       <div class="col-lg-6">
-        <%= form_for :@bank_detail, url: employee_bank_detail_index_path, html: { method: :post } do |f| %>
+        <%= form_for(@bank_detail, url: employee_bank_detail_index_path, html: { method: :post }) do |f| %>
+
           <div class="table-responsive"> 
             <table class="table table-bordered table-hover">
               <tr>

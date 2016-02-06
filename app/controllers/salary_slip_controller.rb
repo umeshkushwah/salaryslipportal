@@ -4,7 +4,7 @@ class SalarySlipController < BaseController
 
   layout :set_layout
     
-  before_action :authenticate_admin, only: [:show, :index, :create, :new]
+  before_action :authenticate_admin, except: [:show_slip]
   before_action :find_employee
   before_action :find_salary_info, only: [:show, :destroy, :show_slip]
   before_action :get_salary_index, only: [:index, :destroy]
@@ -64,7 +64,7 @@ class SalarySlipController < BaseController
   end
 
   def create_params
-    params.require(:salary_info).permit!
+    params.require(:salary_info).permit(:basic, :total_working_days, :working_days, :allowance_added, :allowance_deduction, :month)
   end
 
   def set_layout

@@ -14,7 +14,7 @@ class ConversationController < BaseController
   def reply
     current_employee.reply_to_conversation(@conversation, params[:body])
     respond_to do |format|
-      format.js{ flash.now[:success] = "Message sent" }
+      format.js{ flash.now[:success] = "Message has been sent!" }
       format.html
     end
   end

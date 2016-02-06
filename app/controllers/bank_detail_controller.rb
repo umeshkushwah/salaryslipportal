@@ -4,15 +4,15 @@ class BankDetailController < BaseController
   
   layout "admin"
 
-  before_action :find_employee, only: [:create, :new, :index, :edit, :update, :show]
-  before_action :find_bank_detail, only: [:index, :edit, :update, :show]
+  before_action :find_employee
+  before_action :find_bank_detail, except: [:new, :create]
   
   def new
     @bank_detail = BankDetail.new
   end
 
   def create
-    @bank_detail = @employee.build_bank_detail(create_params)
+    @bank_detail = @employee.build_bank_detail(bank_details_params)
     if @bank_detail.save
       flash[:notice] = "Bank Details added successfully"
       redirect_to employee_bank_detail_index_path
@@ -23,7 +23,7 @@ class BankDetailController < BaseController
   end
 
   def update
-    if @bank_detail.update(update_params)
+    if @bank_detail.update(bank_details_params)
       flash[:notice] = "Bank detail updated successfully"
       redirect_to employee_bank_detail_index_path(@employee.id)
     else
@@ -34,11 +34,7 @@ class BankDetailController < BaseController
 
   private
 
-  def create_params
-    params.require(:@bank_detail).permit(:bank_name, :branch_name, :address, :city, :account_number)
-  end
-
-  def update_params
+  def bank_details_params
     params.require(:bank_detail).permit(:bank_name, :branch_name, :address, :city, :account_number)
   end
 
