@@ -8,7 +8,7 @@ class BankDetailController < BaseController
   before_action :find_bank_detail, except: [:new, :create]
   
   def new
-    @bank_detail = BankDetail.new
+    @bank_detail = @employee.build_bank_detail
   end
 
   def create

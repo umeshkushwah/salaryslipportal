@@ -7,10 +7,10 @@ class SalarySlipController < BaseController
   before_action :authenticate_admin, except: [:show_slip]
   before_action :find_employee
   before_action :find_salary_info, only: [:show, :destroy, :show_slip]
-  before_action :get_salary_index, only: [:index, :destroy]
+  before_action :get_salaries, only: [:index, :destroy]
   
   def new
-    @salary_info = SalaryInfo.new
+    @salary_info = @employee.salary_infos.build
   end
 
   def create
@@ -25,8 +25,6 @@ class SalarySlipController < BaseController
   end
   
   def show_slip
-    @current_org
-    @salary_info
     respond_to do |format|
       format.html
       format.pdf do
@@ -75,7 +73,7 @@ class SalarySlipController < BaseController
     end
   end
 
-  def get_salary_index
+  def get_salaries
     @salary_infos = @employee.salary_infos.paginate(:page => params[:page], :per_page => 9)   
   end
 end
