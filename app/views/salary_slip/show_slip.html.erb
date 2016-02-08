@@ -24,65 +24,65 @@
           <p>
               <%= image_tag(@current_org.logo_url) if @current_org.logo? %>
           </p>
-        <div class="table-responsive"> 
-          <table class="table table-bordered table-hover table-striped">
-            <tr>
-              <td><%= f.label :employee_name %>&nbsp&nbsp</td>
-              <td><%= @employee.full_name %></td>
-            </tr>
-            <tr>
-              <td><%= f.label :employee_no %></td>
-              <td><%= @employee.id %></td>
-            </tr>
-            <tr>
-              <td><%= f.label :email %></td>
-              <td><%= @employee.email %></td>
-            </tr>
-            <tr>
-              <td><%= f.label :address %></td>
-              <td><%= @employee.address %></td>
-            </tr>
-            <tr>
-              <td><%= f.label :mobile %></td>
-              <td><%= @employee.mobile %></td>
-            </tr>
-            <tr>
-              <td><%= f.label :basic %></td>
-              <td><%= @salary_info.basic %></td>
-            </tr>
-            <tr>
-              <td><%= f.label :hra %></td>
-              <td><%= @salary_info.hra %></td>
-            </tr>
-            <tr>
-              <td><%= f.label :month_and_year %></td>
-              <td><%= @salary_info.month %></td>
-            </tr>
-            <tr>
-              <td><%= f.label :provident_fund %></td>
-              <td><%= @salary_info.provident_fund %></td>
-            </tr>
-            <tr>
-              <td><%= f.label :proffesional_tax %></td>
-              <td><%= @salary_info.proffesional_tax %></td>
-            </tr>
-            <tr>
-              <td><%= f.label :gross_earning %></td>
-              <td><%= @salary_info.gross_earning %></td>
-            </tr>
-            <tr>
-              <td><%= f.label :gross_deduction %></td>
-              <td><%= @salary_info.gross_deduction %></td>
-            </tr>
-            <tr>
-              <td><%= f.label :net_pay %></td>
-              <td><%= @salary_info.net_pay %></td>
-            </tr>
-          </table>
-          <div>
-          <%= link_to " Download Pdf", show_slip_employee_salary_slip_path(@salary_info.employee_id, @salary_info.id, format: "pdf") , class: "glyphicon glyphicon-download-alt" %>
+          <div class="table-responsive"> 
+            <table class="table table-bordered table-hover table-striped">
+              <tr>
+                <td><%= f.label :employee_name %>&nbsp&nbsp</td>
+                <td><%= @employee.full_name %></td>
+              </tr>
+              <tr>
+                <td><%= f.label :employee_no %></td>
+                <td><%= @employee.id %></td>
+              </tr>
+              <tr>
+                <td><%= f.label :email %></td>
+                <td><%= @employee.email %></td>
+              </tr>
+              <tr>
+                <td><%= f.label :address %></td>
+                <td><%= @employee.address %></td>
+              </tr>
+              <tr>
+                <td><%= f.label :mobile %></td>
+                <td><%= @employee.mobile %></td>
+              </tr>
+              <tr>
+                <td><%= f.label :basic %></td>
+                <td><%= number_to_currency(@salary_info.basic, precision: 2, unit: "₹ ") %></td>
+              </tr>
+              <tr>
+                <td><%= f.label :hra %></td>
+                <td><%= number_to_currency(@salary_info.hra, precision: 2, unit: "₹ ") %></td>
+              </tr>
+              <tr>
+                <td><%= f.label :month_and_year %></td>
+                <td><%= @salary_info.month %></td>
+              </tr>
+              <tr>
+                <td><%= f.label :provident_fund %></td>
+                <td><%= number_to_currency(@salary_info.provident_fund, precision: 2, unit: "₹ ") %></td>
+              </tr>
+              <tr>
+                <td><%= f.label :proffesional_tax %></td>
+                <td><%= number_to_currency(@salary_info.proffesional_tax, precision: 2, unit: "₹ ") %></td>
+              </tr>
+              <tr>
+                <td><%= f.label :gross_earning %></td>
+                <td><%= number_to_currency(@salary_info.gross_earning, precision: 2, unit: "₹ ") %></td>
+              </tr>
+              <tr>
+                <td><%= f.label :gross_deduction %></td>
+                <td><%= number_to_currency(@salary_info.gross_deduction, precision: 2, unit: "₹ " ) %></td>
+              </tr>
+              <tr>
+                <td><%= f.label :net_pay %></td>
+                <td><b><%= number_to_currency(@salary_info.net_pay, precision: 2, unit: "₹ ") %></b></td>
+              </tr>
+            </table>
+            <div>
+              <%= link_to " Download Pdf", show_slip_employee_salary_slip_path(@salary_info.employee_id, @salary_info.id, format: "pdf") , class: "glyphicon glyphicon-download-alt" %>
+            </div>
           </div>
-        </div>
         <% end %>
       </div>
     </div>

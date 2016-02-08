@@ -1,6 +1,6 @@
 class Employees::PasswordsController < Devise::PasswordsController
   # GET /resource/password/new
-  before_filter :authenticate_user!
+  before_filter :authenticate_employee!
   def new
     super
   end

@@ -44,13 +44,13 @@ class SalarySlipPdf < Prawn::Document
   end
 
   def salary_rows
-    [['Basic', @salary_info.basic],
-    ['HRA', @salary_info.hra],
+    [['Basic', @salary_info.basic.round.round(2)],
+    ['HRA', @salary_info.hra.round(2)],
     ['Date', @salary_info.month],
-    ['Provident Fund', @salary_info.provident_fund],
-    ['Proffesional tax', @salary_info.proffesional_tax],
-    ['Gross Earning', @salary_info.gross_earning],
-    ['Dross Deduction', @salary_info.gross_deduction],
-    ['Net Pay', @salary_info.net_pay]]
+    ['Provident Fund', @salary_info.provident_fund.round(2)],
+    ['Proffesional tax', @salary_info.proffesional_tax.round(2)],
+    ['Gross Earning', @salary_info.gross_earning.round(2)],
+    ['Gross Deduction', @salary_info.gross_deduction.round(2)],
+    ['Net Pay', @salary_info.net_pay.round(2)]]
   end
 end
