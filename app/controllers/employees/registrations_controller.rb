@@ -1,6 +1,6 @@
 class Employees::RegistrationsController < Devise::RegistrationsController
   before_action :find_organization, only: [:create]
-  before_action :initialize_organization, only: [:edit, :update]
+  before_action :current_org, only: [:edit, :update]
   layout :set_layout
   
   def create
@@ -56,7 +56,15 @@ class Employees::RegistrationsController < Devise::RegistrationsController
     end
   end
 
-  def initialize_organization    
+  def current_org    
     @current_org = current_employee.organization
+  end
+
+  def after_update_path_for(resource)
+    if resource.is_admin?
+      admin_dashboard_index_path
+    else
+      employees_dashboard_path(current_employee.id)
+    end
   end
 end

@@ -4,10 +4,7 @@
       <div class="form-top-left">
         <h3>Login to our site</h3>
         <p>Enter your username and password to login:</p>
-        <%= devise_error_messages! %>
-        <% flash.each do |key, value| %>
-          <div class="flash <%= key %>"><%= value %></div>
-        <% end %>
+        <%= render :partial => "layouts/devise_flash_message" %>
       </div>
       <div class="form-top-right">
         <i class="fa fa-lock"></i>

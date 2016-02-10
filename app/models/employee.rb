@@ -10,6 +10,7 @@ class Employee < ActiveRecord::Base
   
   #Validations
   validates :first_name, :last_name, presence: true, length: {minimum: 3}, format: {with: /\A[a-zA-Z]+(?: [a-zA-Z]+)?\z/ }
+  validates :mobile, presence: true, numericality: true, length: {minimum: 10, maximum: 11}, on: [:update]
 
   #Devise
   devise :database_authenticatable, :registerable,

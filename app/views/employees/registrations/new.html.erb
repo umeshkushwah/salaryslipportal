@@ -3,12 +3,7 @@
     <div class="form-top">
       <div class="form-top-left">
         <h3>Please enter the information</h3>
-        <%= devise_error_messages! %>
-        <% flash.each do |key, value| %>
-          <div class="flash <%= key %>">
-            <%= value %>
-          </div>
-        <% end %>
+        <%= render :partial => "layouts/devise_flash_message" %>
       </div>
       
       <div class="form-top-right">
