@@ -14,32 +14,30 @@
     </div>
     <div class="row">
       <div class="col-lg-6">
-        <%= form_for(@bank_detail, url: employee_bank_detail_path, html: { method: :patch }) do |f| %>
-          <div class="table-responsive"> 
-            <table class="table table-bordered table-hover table-striped">
-              <tr>
-                <td><%= f.label :bank_name %>&nbsp&nbsp</td>
-                <td><%= @bank_detail.bank_name %></td>
-              </tr>
-              <tr>
-                <td><%= f.label :branch_name %>&nbsp&nbsp</td>
-                <td><%= @bank_detail.branch_name %></td>
-              </tr>
-              <tr>
-                <td><%= f.label :address %>&nbsp&nbsp</td>
-                <td><%= @bank_detail.address %></td>
-              </tr>
-              <tr>
-                <td><%= f.label :city %>&nbsp&nbsp</td>
-                <td><%= @bank_detail.city %></td>
-              </tr>
-              <tr>
-                <td><%= f.label :account_number %>&nbsp&nbsp</td>
-                <td><%= @bank_detail.account_number %></td>
-              </tr>
-            </table>
-          </div>
-        <% end %>
+        <div class="table-responsive"> 
+          <table class="table table-bordered table-hover table-striped">
+            <tr>
+              <td><b>Bank Name</b></td>
+              <td><b><%= @bank_detail.bank_name %></b></td>
+            </tr>
+            <tr>
+              <td><b>Account No</b></td>
+              <td><b><%= @bank_detail.account_number %></b></td>
+            </tr>
+            <tr>
+              <td><b>Branch Name</b></td>
+              <td><%= @bank_detail.branch_name %></td>
+            </tr>
+            <tr>
+              <td><b>Address</b></td>
+              <td><%= @bank_detail.address %></td>
+            </tr>
+            <tr>
+              <td><b>City</b></td>
+              <td><%= @bank_detail.city %></td>
+            </tr>
+          </table>
+        </div>
       </div>
     </div>
   </div>

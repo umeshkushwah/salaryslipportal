@@ -11,10 +11,15 @@
     <% @employees.each do |employee| %>
       <tr>
         <td><b><%= employee.full_name %></b></td>
+
         <td><i><%= employee.email %></i></td>
+
         <td><%= link_to_unless(employee.confirmed?, " Confirmed", confirm_employee_admin_dashboard_path(employee.id), :method=> :post) %></td>
-        <td><%= link_to_unless(employee.is_admin?, "", admin_dashboard_path(employee.id), :method=> :delete, remote: true, class: "glyphicon glyphicon-trash",id: "tipsy-tooltip",title: "Delete Employee", data: {confirm: 'Are you sure you want to delete?'})  %></td>
+
+        <td><%= link_to_unless(employee.is_admin?, "", admin_dashboard_path(employee.id), :method=> :delete, remote: true, class: "glyphicon glyphicon-trash",id: "tipsy-tooltip",title: "Delete Employee", data: {confirm: 'Are you sure you want to delete?'}) %></td>
+
         <td><%= link_to "", employee_salary_slip_index_path(employee.id), class: "glyphicon glyphicon-file", id: "tipsy-tooltip", title: "View Salary Info" %></td>
+        
         <td><%= link_to "", employee_bank_detail_index_path(employee.id) , class: "glyphicon glyphicon-pencil",id: "tipsy-tooltip", title: "View Bank Info" %></td>
       </tr>
     <% end %>

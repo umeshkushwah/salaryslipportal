@@ -40,8 +40,8 @@
             <%= f.label :mobile %>
             <%= f.text_field :mobile, class: "form-control" %></br>
 
-            <%= f.label :date_of_birth %>
-            <%= f.text_field :dob, class: "form-control", placeholder: "dd-mm-yyyy" %></br></br>
+            <%= f.label :date_of_birth %>&nbsp&nbsp
+            <%= f.date_select :dob, order: [:day, :month, :year] %></br></br>
 
             <%= f.label :gender %>&nbsp&nbsp
             <%= f.radio_button :gender, 'male', :checked => true %> 
@@ -52,8 +52,8 @@
             <%= f.label :degignation %>
             <%= f.text_field :degignation, class: "form-control" %></br>
 
-            <%= f.label :date_of_joining %>
-            <%= f.text_field :date_of_joining, class: "form-control" %></br>
+            <%= f.label :date_of_joining %>&nbsp&nbsp
+            <%= f.date_select :date_of_joining, order: [:day, :month, :year] %></br></br>
 
             <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
               <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %>
