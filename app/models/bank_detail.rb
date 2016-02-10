@@ -4,5 +4,4 @@ class BankDetail < ActiveRecord::Base
   #Validation
   validates :bank_name, :branch_name, :address, :city, presence: true
   validates :account_number, presence: true, uniqueness: true
-  validates_associated :employee
 end
