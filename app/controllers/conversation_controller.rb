@@ -3,7 +3,7 @@ class ConversationController < BaseController
   include SetLayout
 
   before_action :get_mailbox
-  before_action :get_conversation, except: [:index, :empty_trash]
+  before_action :get_conversation, except: [:index]
 
   layout :set_layout
 
@@ -22,12 +22,6 @@ class ConversationController < BaseController
   def destroy
     @conversation.move_to_trash(current_employee)
     flash[:success] = 'The conversation was moved to trash.'
-    redirect_to conversation_index_path
-  end
-
-  def mark_as_read
-    @conversation.mark_as_read(current_employee)
-    flash[:success] = 'The conversation was marked as read.'
     redirect_to conversation_index_path
   end
 

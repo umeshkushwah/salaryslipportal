@@ -15,6 +15,7 @@
  *= require_self
  *= require login-form-elements
  *= require login-style 
+ *= require tipsy
  */
 
 

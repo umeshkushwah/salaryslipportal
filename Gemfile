@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem 'tipsy-rails'
 gem 'rails_12factor', group: :production
 gem 'mailboxer'
 gem 'jquery-turbolinks'

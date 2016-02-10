@@ -24,7 +24,7 @@
             </thead>            
             <% @salary_infos.each do |s| %>
               <tr>
-                <td><%= s.month %></td>
+                <td><b><%= dd_mm_yyyy_date_helper(s.month) %></b></td>
                 <td><%= link_to " View", show_slip_employee_salary_slip_path(s.employee_id,s.id), class: "glyphicon glyphicon-file" %></td>
               </tr>
             <% end %>

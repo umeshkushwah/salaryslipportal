@@ -1,5 +1,7 @@
 class SalarySlipPdf < Prawn::Document 
 
+  include DateTimeHelper
+  include ActionView::Helpers::NumberHelper
   require "open-uri"
   require "prawn/table"
   require "prawn"
@@ -44,13 +46,13 @@ class SalarySlipPdf < Prawn::Document
   end
 
   def salary_rows
-    [['Basic', @salary_info.basic.round.round(2)],
-    ['HRA', @salary_info.hra.round(2)],
-    ['Date', @salary_info.month],
-    ['Provident Fund', @salary_info.provident_fund.round(2)],
-    ['Proffesional tax', @salary_info.proffesional_tax.round(2)],
-    ['Gross Earning', @salary_info.gross_earning.round(2)],
-    ['Gross Deduction', @salary_info.gross_deduction.round(2)],
-    ['Net Pay', @salary_info.net_pay.round(2)]]
+    [['Basic', number_to_currency(@salary_info.basic, precision: 2, unit: "")],
+    ['HRA', number_to_currency(@salary_info.hra, precision: 2, unit: "")],
+    ['Date', dd_mm_yyyy_date_helper(@salary_info.month)],
+    ['Provident Fund', number_to_currency(@salary_info.provident_fund, precision: 2, unit: "")],
+    ['Proffesional tax', number_to_currency(@salary_info.proffesional_tax, precision: 2, unit: "")],
+    ['Gross Earning', number_to_currency(@salary_info.gross_earning, precision: 2, unit: "")],
+    ['Gross Deduction', number_to_currency(@salary_info.gross_deduction, precision: 2, unit: "")],
+    ['Net Pay', number_to_currency(@salary_info.net_pay, precision: 2, unit: "Rs ")]]
   end
 end

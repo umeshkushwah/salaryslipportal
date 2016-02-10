@@ -14,44 +14,42 @@
     </div>
     <div class="row">
       <div class="col-lg-6">
-        <%= form_for(@current_org, url: "#") do |f| %>
-          <div class="table-responsive"> 
-            <table class="table table-bordered table-hover table-striped">
+        <div class="table-responsive"> 
+          <table class="table table-bordered table-hover table-striped">
             <p>
                 <%= image_tag(@current_org.logo_url) if @current_org.logo? %>
             </p>
-              <tr>
-                <td><%= f.label :organization_name %>&nbsp&nbsp</td>
-                <td><%= @current_org.name %></td>
-              </tr>
-              <tr>
-                <td><%= f.label :address %></td>
-                <td><%= @current_org.address %></td>
-              </tr>
-              <tr>
-                <td><%= f.label :domain_name %></td>
-                <td><%= @current_org.domain %></td>
-              </tr>
-              <tr>
-                <td><%= f.label :city %></td>
-                <td><%= @current_org.city %></td>
-              </tr>
-              <tr>
-                <td><%= f.label :state %></td>
-                <td><%= @current_org.state %></td>
-              </tr>
-              <tr>
-                <td><%= f.label :pin_code %></td>
-                <td><%= @current_org.pin_code %></td>
-              </tr>
-              <tr>
-                <td><%= f.label :phone %></td>
-                <td><%= @current_org.phone %></td>
-              </tr>
-            </table>
-          </div>
-        <% end %>
-       </div>
-     </div>
-   </div>
- </div>
+            <tr>
+              <td><b>Organization Name</b></td>
+              <td><b><%= @current_org.name %></b></td>
+            </tr>
+            <tr>
+              <td>Address</td>
+              <td><%= @current_org.address %></td>
+            </tr>
+            <tr>
+              <td>Domain Name</td>
+              <td><%= @current_org.domain %></td>
+            </tr>
+            <tr>
+              <td>City</td>
+              <td><%= @current_org.city %></td>
+            </tr>
+            <tr>
+              <td>State</td>
+              <td><%= @current_org.state %></td>
+            </tr>
+            <tr>
+              <td>Pin Code</td>
+              <td><%= @current_org.pin_code %></td>
+            </tr>
+            <tr>
+              <td>Mobile</td>
+              <td><%= @current_org.phone %></td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

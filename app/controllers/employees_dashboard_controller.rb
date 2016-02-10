@@ -1,6 +1,7 @@
 class EmployeesDashboardController < BaseController
   
  layout "employees"
+ include DateTimeHelper
 
   def index
     @salary_infos = current_employee.salary_infos.paginate(:page => params[:page], :per_page => 9)

@@ -1,9 +1,9 @@
 class BaseController < ApplicationController
   
   before_action :authenticate_employee!
-  before_action :initialize_organization
+  before_action :current_org
   
-  def initialize_organization    
+  def current_org
     @current_org = current_employee.organization
   end
 end

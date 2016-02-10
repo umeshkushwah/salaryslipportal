@@ -2,7 +2,7 @@
   <div class="panel-body">
     <div class="messages">
       <i>Conversation started at: <%= @conversation.receipts_for(current_employee).first.message.created_at.strftime("%-d %B %Y, %H:%M:%S") %></i></br></br>
-      <% @conversation.receipts_for(current_employee).each do |receipt| %>
+      <% @conversation.receipts_for(current_employee).order(:created_at).each do |receipt| %>
         <% message = receipt.message %>
 
         <% unless message.sender.nil? %>

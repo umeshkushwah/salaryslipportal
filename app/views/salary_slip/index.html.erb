@@ -13,11 +13,11 @@
           <li>
             <%= link_to " Home", admin_dashboard_index_path, class: "glyphicon glyphicon-home" %>
           </li>
-          <li>
-            <i class="fa fa-dashboard"></i>  
-            <%= link_to "Generate Salary slip", new_employee_salary_slip_path %>
-          </li>
         </ol>
+        <div class="row">
+            <p><%= link_to 'Generate Salary Slip', new_employee_salary_slip_path, class: 'btn btn-lg btn-primary' %>
+            </p>
+          </div>
         <div id="salary_index"> 
           <%= render 'salary_index' %>
         </div>

@@ -9,7 +9,7 @@ class Employee < ActiveRecord::Base
   has_one :bank_detail
   
   #Validations
-  validates :first_name, :last_name, presence: true, length: {minimum: 3}
+  validates :first_name, :last_name, presence: true, length: {minimum: 3}, format: {with: /\A[a-zA-Z]+(?: [a-zA-Z]+)?\z/ }
 
   #Devise
   devise :database_authenticatable, :registerable,

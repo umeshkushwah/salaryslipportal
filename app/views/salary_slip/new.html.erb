@@ -46,11 +46,11 @@
               </tr>
               <tr>
                 <td><%= f.label :total_working_days %>&nbsp&nbsp</td>
-                <td><%= f.text_field :total_working_days %></td>
+                <td><%= select_tag :total_working_days, options_for_select(0..31,0) %></td>
               </tr>
               <tr>
                 <td><%= f.label :employee_working_days %></td>
-                <td><%= f.text_field :working_days %></td>
+                <td><%= select_tag :working_days, options_for_select(0..31,0) %></td>
               </tr>
               <tr>
                 <td><%= f.label :allowance_added %></td>
@@ -62,7 +62,7 @@
               </tr>
               <tr>
                 <td><%= f.label :month_and_year %></td>
-                <td><%= f.text_field :month, class: "datepicker", placeholder: "dd-mm-yyyy" %>
+                <td><%= f.text_field :month, class: "datepicker", id: "selectDate", placeholder: "dd-mm-yyyy" %>
                 </td>
               </tr>
             </table>

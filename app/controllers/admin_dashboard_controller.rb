@@ -34,7 +34,7 @@ class AdminDashboardController < BaseController
     end
   end
 
-  def authenticate_admin    
+  def authenticate_admin 
     unless current_employee.is_admin?
       flash[:notice] = "You don't have access to the requested url"
       redirect_to employees_dashboard_path(current_employee.id)

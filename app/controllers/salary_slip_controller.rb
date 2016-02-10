@@ -1,7 +1,7 @@
 class SalarySlipController < BaseController 
 
   include FindEmployee
-
+  include DateTimeHelper
   layout :set_layout
     
   before_action :authenticate_admin, except: [:show_slip]
@@ -62,7 +62,7 @@ class SalarySlipController < BaseController
   end
 
   def create_params
-    params.require(:salary_info).permit(:basic, :total_working_days, :working_days, :allowance_added, :allowance_deduction, :month)
+    params.require(:salary_info).permit(:basic, :allowance_added, :allowance_deduction, :month).merge(total_working_days: params[:total_working_days], working_days: params[:working_days])
   end
 
   def set_layout

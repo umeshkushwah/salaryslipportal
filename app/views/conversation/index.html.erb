@@ -26,7 +26,6 @@
                   <th>Name</th>
                   <th>Subject</th>
                   <th>Move to trash</th>
-                  <th>Mark as read</th>
                 </tr>
               </thead>            
               <% @conversations.each do |conversation| %>
@@ -39,17 +38,9 @@
                     <% end %>
                   </td> 
                   <td><i><%= link_to conversation.subject, conversation_path(conversation) %></i></td>
-                  <% if conversation.is_trashed?(current_employee) %>
-                    <td><%= link_to 'Restore', restore_conversation_path(conversation), class: 'btn btn-xs btn-info', method: :post %>
-                    </td>
-                  <% else %>
+          
                     <td><%= link_to 'Move to trash', conversation_path(conversation), class: 'btn btn-xs btn-danger', method: :delete,
                       data: {confirm: 'Are you sure?'} %></td>
-                  <td><% if conversation.is_unread?(current_employee) %>
-                    <%= link_to 'Mark as read', mark_as_read_conversation_path(conversation),
-                      class: 'btn btn-xs btn-info', method: :post %></td>
-                      <% end %>
-                    <% end %>
                   </tr>
                 <% end %>
             </table>
