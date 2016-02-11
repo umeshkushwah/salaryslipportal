@@ -2,6 +2,7 @@ Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
   config.action_mailer.default_url_options = { host: 'https://salary-slip-generator.herokuapp.com' }
+  #config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
 
 
   # Code is not reloaded between requests.
@@ -83,7 +84,7 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
-  #config.serve_static_assets = true
+  config.serve_static_files = true
 
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.perform_deliveries = true

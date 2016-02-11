@@ -28,3 +28,7 @@ default: &default
 development:
   <<: *default
   database: salary_slip_development
+
+production:
+  <<: *default
+  database: salary_slip_development
