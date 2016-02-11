@@ -26,19 +26,14 @@
         <!-- Top Menu Items -->
         <ul class="nav navbar-right top-nav">
           <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-envelope"></i> <b class="caret"></b></a>
-          </li>
-          <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <%= current_employee.full_name %> <b class="caret"></b></a>
             <ul class="dropdown-menu">
               <li>
                 <%= link_to "Profile", edit_employee_registration_path, class: "fa fa-fw fa-user" %>
               </li>
               <li>
-                <a href="#"><i class="fa fa-fw fa-envelope"></i> Inbox</a>
-              </li>
-              <li>
-                <a href="#"><i class="fa fa-fw fa-gear"></i> Settings</a>
+                <%= link_to "Inbox", conversation_index_path, class: "fa fa-fw fa-envelope" %>
+            </li>
               </li>
               <li class="divider"></li>
               <li>
@@ -53,13 +48,13 @@
             <%= link_to " Home", employees_dashboard_path(current_employee.id), class: "glyphicon glyphicon-home" %>
             </li>
             <li> 
-            <%= link_to " view salary slips", employees_dashboard_index_path, class: "glyphicon glyphicon-th-list" %>
+            <%= link_to " Salary Slips", employees_dashboard_index_path, class: "glyphicon glyphicon-th-list" %>
             </li>
             <li>
-            <%= link_to " View Organization", organization_path(@current_org.id), class: "glyphicon glyphicon-calendar"  %>
+            <%= link_to " Organization", organization_path(@current_org.id), class: "glyphicon glyphicon-calendar"  %>
             </li>
             <li>
-            <%= link_to " Your Conversations", conversation_index_path, class: "glyphicon glyphicon-envelope" %>
+            <%= link_to " Conversations", conversation_index_path, class: "glyphicon glyphicon-envelope" %>
             </li>
           </ul>
         </div>
