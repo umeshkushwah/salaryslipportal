@@ -6,7 +6,7 @@ class OrganizationsController < BaseController
 
   def update
     if @current_org.update(update_params)
-      flash[:notice] = "Organization record updated successfully"
+      flash[:notice] = "Organization was updated successfully"
       redirect_to admin_dashboard_index_path
     else
       flash[:error] = @current_org.errors.full_messages

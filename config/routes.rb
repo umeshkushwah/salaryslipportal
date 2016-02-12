@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   end
 
   resources :employees do
-    resources :salary_slip, only: [:index, :new, :create, :show, :destroy] do
+    resources :salary_slip do
       member do
         get :show_slip
       end

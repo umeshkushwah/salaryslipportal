@@ -4,4 +4,8 @@ module DateTimeHelper
     date.strftime("%d %B %Y")
   end
 
+  def dd_MM_yyyy_date_helper(date)
+    date.strftime("%d/%m/%Y")
+  end
+
 end

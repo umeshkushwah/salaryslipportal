@@ -14,7 +14,7 @@ class BankDetailController < BaseController
   def create
     @bank_detail = @employee.build_bank_detail(bank_details_params)
     if @bank_detail.save
-      flash[:notice] = "Bank Details added successfully"
+      flash[:notice] = "Bank Details was added successfully"
       redirect_to employee_bank_detail_index_path
     else
       flash.now[:error] = @bank_detail.errors.full_messages
@@ -24,7 +24,7 @@ class BankDetailController < BaseController
 
   def update
     if @bank_detail.update(bank_details_params)
-      flash[:notice] = "Bank detail updated successfully"
+      flash[:notice] = "Bank detail was updated successfully"
       redirect_to employee_bank_detail_index_path(@employee.id)
     else
       flash.now[:error] = @bank_detail.errors.full_messages

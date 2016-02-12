@@ -6,18 +6,25 @@ class SalarySlipController < BaseController
     
   before_action :authenticate_admin, except: [:show_slip]
   before_action :find_employee
-  before_action :find_salary_info, only: [:show, :destroy, :show_slip]
+  before_action :find_salary_info, except: [:new, :create, :index]
   before_action :get_salaries, only: [:index, :destroy]
   
   def new
-    @salary_info = @employee.salary_infos.build
+    @salary_info = @employee.salary_infos.new
   end
 
   def create
-    @salary_info = @employee.salary_infos.build(create_params)
-    if @salary_info.save
-      flash[:notice] = "Salary Slip generated successfully"
-      redirect_to  employee_salary_slip_path(employee_id: @salary_info[:employee_id], id: @salary_info[:id])
+    @salary_info = @employee.salary_infos.new(salary_params)
+    if @salary_info.valid?
+      salary_info = SalarySlipService.new(salary_params, @employee)
+      result, salary_info = salary_info.create_salary_info
+      if result
+        flash[:notice] = "Salary Slip was generated successfully"
+        redirect_to  employee_salary_slip_path(@employee.id, salary_info.id)
+      else
+        flash.now[:error] = salary_info.errors.full_messages
+        render 'new'      
+      end  
     else
       flash.now[:error] = @salary_info.errors.full_messages
       render 'new'      
@@ -38,10 +45,25 @@ class SalarySlipController < BaseController
   def destroy
     if @salary_info.destroy
       respond_to do |format|
-        format.js{ flash.now[:notice] = "Salary info deleted successfully" }
+        format.js{ flash.now[:notice] = "Salary info was deleted successfully" }
         format.html
       end
+    else
+      flash[:notice] = "You don't have access to the requested url"
+      redirect_to employee_salary_slip_index_path(@employee.id)
     end
+  end
+
+  def update
+    salary_info = SalarySlipService.new(salary_params.merge(id: @salary_info.id), @employee)
+    result, salary_info = salary_info.update_salary_info
+    if result
+      flash[:notice] = "Salary slip was update successfully"
+      redirect_to  employee_salary_slip_path(@employee.id, @salary_info.id)
+    else
+      flash.now[:error] = salary_info.errors.full_messages
+      render 'edit'      
+    end  
   end
   
   private
@@ -61,7 +83,7 @@ class SalarySlipController < BaseController
     end    
   end
 
-  def create_params
+  def salary_params
     params.require(:salary_info).permit(:basic, :allowance_added, :allowance_deduction, :month).merge(total_working_days: params[:total_working_days], working_days: params[:working_days])
   end
 

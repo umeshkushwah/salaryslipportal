@@ -8,12 +8,7 @@ $(document).ready(function(){
   });;
 });
 
-
-$('#tipsy-tooltip').tipsy({
-  title: function() {
-    return this.getAttribute('original-title').toUpperCase();
-  }
-});
+$('#tipsy-tooltip').tipsy()
 
 
 

@@ -3,7 +3,7 @@
     <div class="row">
       <div class="col-lg-12">
         <h1 class="page-header">
-          Enter required information
+          Edit Salary Slip
         </h1>
         <ol class="breadcrumb">
           <li class="active">
@@ -14,7 +14,7 @@
     </div>
     <div class="row">
       <div class="col-lg-6">
-        <%= form_for(@salary_info, url:  employee_salary_slip_index_path, html: { method: :post }) do |f| %>
+        <%= form_for(@salary_info, url:  employee_salary_slip_path, html: { method: :put }) do |f| %>
           <div class="table-responsive"> 
             <table class="table table-bordered table-hover">
               <tr>
@@ -42,32 +42,31 @@
             <table class="table table-bordered table-hover">
               <tr></br>
                 <td><%= f.label :basic %>&nbsp&nbsp</td>
-                <td><%= f.text_field :basic %></td>
+                <td><%= f.text_field :basic, value: number_with_precision(@salary_info.basic, precision: 2) %></td>
               </tr>
               <tr>
                 <td><%= f.label :total_working_days %>&nbsp&nbsp</td>
-                <td><%= select_tag :total_working_days, options_for_select(1..31, 1) %></td>
+                <td><%= select_tag :total_working_days, options_for_select(1..31, @salary_info.total_working_days) %></td>
               </tr>
               <tr>
                 <td><%= f.label :employee_working_days %></td>
-                <td><%= select_tag :working_days, options_for_select(1..31, 1) %></td>
+                <td><%= select_tag :working_days, options_for_select(1..31, @salary_info.working_days) %></td>
               </tr>
               <tr>
                 <td><%= f.label :allowance_added %></td>
-                <td><%= f.text_field :allowance_added, value: "0" %></td>
+                <td><%= f.text_field :allowance_added, value: @salary_info.allowance_added %></td>
               </tr>
               <tr>
                 <td><%= f.label :allowance_deduction %></td>
-                <td><%= f.text_field :allowance_deduction, value: "0" %></td>
+                <td><%= f.text_field :allowance_deduction, value: @salary_info.allowance_deduction %></td>
               </tr>
               <tr>
                 <td><%= f.label :month_and_year %></td>
-                <td><%= f.text_field :month, class: "datepicker", id: "selectDate", placeholder: "dd-mm-yyyy" %>
+                <td><%= f.text_field :month, class: "datepicker", id: "selectDate", placeholder: "dd-mm-yyyy", value: dd_MM_yyyy_date_helper(@salary_info.month) %>
                 </td>
               </tr>
             </table>
-            <%= f.submit "Generate Slip", class: "btn btn-default" %> &nbsp
-            <button type="reset" class="btn btn-default">Reset Button</button>
+            <%= f.submit "Update Salary Slip", class: "btn btn-default" %>
           </div>
         <% end %>
       </div>

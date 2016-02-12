@@ -4,6 +4,7 @@
       <tr>
         <th>Month</th>
         <th>Salary Slip</th>
+        <th>Edit</th>
         <th>Delete</th>
       </tr>
     </thead>            
@@ -11,9 +12,15 @@
       <tr>
         <td><b><%= dd_mm_yyyy_date_helper(s.month) %></b></td>
         <td><%= link_to " View", employee_salary_slip_path(s.employee_id, s.id), class: "glyphicon glyphicon-file" %></td>
+
+        <td><%= link_to " Edit", edit_employee_salary_slip_path(s.employee_id, s.id), class: "glyphicon glyphicon-pencil" %></td>        
+
         <td><%= link_to " Delete", employee_salary_slip_path(s.employee_id, s.id), :method=> :delete, class: "glyphicon glyphicon-trash", :remote => true, data: {confirm: 'Are you sure you want to delete?'} %></td>
       </tr>
     <% end %>
   </table>
   <%= will_paginate @salary_infos %>
 </div>
+
+
+
