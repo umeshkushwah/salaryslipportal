@@ -10,12 +10,6 @@
           <li>  
             <%= link_to " Show all employees", admin_dashboard_index_path, class: "glyphicon glyphicon-th-list" %>
           </li>
-          <li>  
-            <%= link_to " Edit Admin", edit_employee_registration_path, class: "glyphicon glyphicon-pencil" %>
-          </li>
-          <li>
-            <%= link_to " Edit Organization", edit_organization_path(@current_org.id), class: "glyphicon glyphicon-pencil" %>
-          </li>
         </ol>
         <div id="employee_index">
           <%= render 'employee_index' %>

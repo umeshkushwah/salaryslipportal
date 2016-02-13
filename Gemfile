@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem 'will_paginate-bootstrap'
 gem 'tipsy-rails'
 gem 'rails_12factor', group: :production
 gem 'mailboxer'

@@ -7,7 +7,7 @@
         </h1>
         <ol class="breadcrumb">
           <li class="active">
-            <i class="fa fa-edit"></i> <%= link_to "Back", :back %>
+            <i class="glyphicon glyphicon-arrow-left"></i> <%= link_to "Back", :back %>
           </li>
         </ol>
       </div>
@@ -53,16 +53,12 @@
                 <td><%= select_tag :working_days, options_for_select(1..31, @salary_info.working_days) %></td>
               </tr>
               <tr>
-                <td><%= f.label :allowance_added %></td>
+                <td><%= f.label :Extra %></td>
                 <td><%= f.text_field :allowance_added, value: @salary_info.allowance_added %></td>
               </tr>
               <tr>
-                <td><%= f.label :allowance_deduction %></td>
-                <td><%= f.text_field :allowance_deduction, value: @salary_info.allowance_deduction %></td>
-              </tr>
-              <tr>
                 <td><%= f.label :month_and_year %></td>
-                <td><%= f.text_field :month, class: "datepicker", id: "selectDate", placeholder: "dd-mm-yyyy", value: dd_MM_yyyy_date_helper(@salary_info.month) %>
+                <td><%= f.text_field :month, class: "datepicker", id: "selectDate", value: dd_MM_yyyy_date_helper(@salary_info.month) %>
                 </td>
               </tr>
             </table>

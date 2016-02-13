@@ -23,7 +23,6 @@ class SalarySlipService
   def set_params
     { basic: @params[:basic],
     allowance_added: @params[:allowance_added],
-    allowance_deduction: @params[:allowance_deduction],
     total_working_days: @params[:total_working_days],
     working_days: @params[:working_days],
     month: @params[:month],  
@@ -56,7 +55,7 @@ class SalarySlipService
   end
 
   def get_gross_deduction
-    get_pf + get_proffesional_tax + @params[:allowance_deduction].to_f
+    get_pf + get_proffesional_tax 
   end
 
   def get_net_pay

@@ -53,7 +53,7 @@ class SalarySlipController < BaseController
       redirect_to employee_salary_slip_index_path(@employee.id)
     end
   end
-
+  
   def update
     salary_info = SalarySlipService.new(salary_params.merge(id: @salary_info.id), @employee)
     result, salary_info = salary_info.update_salary_info
@@ -96,6 +96,6 @@ class SalarySlipController < BaseController
   end
 
   def get_salaries
-    @salary_infos = @employee.salary_infos.paginate(:page => params[:page], :per_page => 9)   
+    @salary_infos = @employee.salary_infos.order(:month).paginate(:page => params[:page], :per_page => 9)   
   end
 end

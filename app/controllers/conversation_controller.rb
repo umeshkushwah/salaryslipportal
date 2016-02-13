@@ -8,7 +8,7 @@ class ConversationController < BaseController
   layout :set_layout
 
   def index
-    @conversations = @mailbox.inbox.paginate(page: params[:page], per_page: 10)
+    @conversations = @mailbox.inbox.paginate(page: params[:page], per_page: 8)
   end
 
   def reply

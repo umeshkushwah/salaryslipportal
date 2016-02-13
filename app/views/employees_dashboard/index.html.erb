@@ -29,7 +29,7 @@
               </tr>
             <% end %>
           </table>
-          <%= will_paginate @salary_infos %>
+          <%= will_paginate @salary_infos, renderer: BootstrapPagination::Rails %>
         </div>
       </div>
     </div>

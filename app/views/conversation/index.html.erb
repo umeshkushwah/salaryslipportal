@@ -11,7 +11,7 @@
         <% end %>
         <ol class="breadcrumb">
           <li class="active">
-            <%= link_to " Back", :back ,class: "glyphicon glyphicon-share-alt" %>
+            <%= link_to " Back", :back ,class: "glyphicon glyphicon-arrow-left" %>
           </li>
         </ol>
           <div class="row">
@@ -44,7 +44,7 @@
                   </tr>
                 <% end %>
             </table>
-          <%= will_paginate @conversations %>
+          <%= will_paginate @conversations, renderer: BootstrapPagination::Rails %>
         </div>
       </div>
     </div>

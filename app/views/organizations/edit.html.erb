@@ -7,7 +7,7 @@
         </h1>
         <ol class="breadcrumb">
           <li class="active">
-            <%= link_to " Back", :back ,class: "glyphicon glyphicon-share-alt" %>
+            <%= link_to " Back", :back ,class: "glyphicon glyphicon-arrow-left" %>
           </li>
         </ol>
       </div>
@@ -22,30 +22,29 @@
           <div class="form-group">
 
             <%= f.label :organization_name %></br>
-            <%= f.text_field :name, autocomplete: "off", class: "form-control" %></br>
+            <%= f.text_field :name, class: "form-control" %></br>
 
             <%= f.label :address %></br>
-            <%= f.text_field :address, autocomplete: "off", class: "form-control" %></br>
+            <%= f.text_field :address, class: "form-control" %></br>
 
             <%= f.label :domain_name %></br>
-            <%= f.text_field :domain, autocomplete: "off", class: "form-control" %></br>
+            <%= f.text_field :domain, class: "form-control" %></br>
 
             <%= f.label :city %></br>
-            <%= f.text_field :city, autocomplete: "off", class: "form-control" %></br>
+            <%= f.text_field :city, class: "form-control" %></br>
 
             <%= f.label :state %></br>
-            <%= f.text_field :state, autocomplete: "off", class: "form-control" %></br>
+            <%= f.text_field :state, class: "form-control" %></br>
 
             <%= f.label :pin_code %></br>
-            <%= f.text_field :pin_code, autocomplete: "off", class: "form-control" %></br>
+            <%= f.text_field :pin_code, class: "form-control" %></br>
 
             <%= f.label :phone %></br>
-            <%= f.text_field :phone, autocomplete: "off", class: "form-control" %></br>
+            <%= f.text_field :phone, class: "form-control" %></br>
 
             <%= f.file_field :logo %></br>
 
-            <%= f.submit "Update", class: "btn btn-default" %> &nbsp
-            <button type="reset" class="btn btn-default">Reset Button</button>
+            <%= f.submit "Update", class: "btn btn-default" %>
           </div>
          <% end %>
        </div>
