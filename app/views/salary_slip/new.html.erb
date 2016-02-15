@@ -14,7 +14,7 @@
     </div>
     <div class="row">
       <div class="col-lg-6">
-        <%= form_for(@salary_info, url:  employee_salary_slip_index_path, html: { method: :post }) do |f| %>
+        <%= form_for(@salary_info, url: employee_salary_slip_index_path, html: { method: :post }) do |f| %>
           <div class="table-responsive"> 
             <table class="table table-bordered table-hover">
               <tr>
@@ -38,7 +38,7 @@
                 <td><%= @employee.mobile %></td>
               </tr>
             </table>
-
+            
             <table class="table table-bordered table-hover">
               <tr></br>
                 <td><%= f.label :basic %>&nbsp&nbsp</td>

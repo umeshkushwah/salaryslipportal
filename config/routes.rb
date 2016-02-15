@@ -10,8 +10,6 @@ Rails.application.routes.draw do
   resources :admin_dashboard, only: [:index, :destroy, :show] do
     member do 
       post :confirm_employee
-      get :create_salary_slip
-      post :save_salary_slip
     end  
   end
 
@@ -21,7 +19,7 @@ Rails.application.routes.draw do
         get :show_slip
       end
     end
-    resources :bank_detail, only: [:new, :create, :edit, :update, :index, :show]
+    resources :bank_detail, except: [:destroy]
   end
 
   resources :organizations, only: [:edit, :update, :show]

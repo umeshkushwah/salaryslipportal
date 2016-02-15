@@ -1,4 +1,6 @@
 class BankDetailController < BaseController
+
+  before_action :authenticate_admin
   
   include FindEmployee
   

@@ -76,13 +76,6 @@ class SalarySlipController < BaseController
     end
   end
 
-  def authenticate_admin    
-    unless current_employee.is_admin?
-      flash[:notice] = "You don't have access to the requested url"
-      redirect_to employees_dashboard_path(current_employee.id)
-    end    
-  end
-
   def salary_params
     params.require(:salary_info).permit(:basic, :allowance_added, :allowance_deduction, :month).merge(total_working_days: params[:total_working_days], working_days: params[:working_days])
   end

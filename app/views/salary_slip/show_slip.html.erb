@@ -21,7 +21,7 @@
     <div class="row">
       <div class="col-lg-6">
         <p>
-            <%= image_tag(@current_org.logo_url) if @current_org.logo? %>
+          <%= image_tag(@current_org.logo_url) if @current_org.logo? %>
         </p>
         <div class="table-responsive"> 
           <table class="table table-bordered table-hover table-striped">
@@ -79,7 +79,7 @@
             </tr>
           </table>
           <div>
-            <%= link_to " Download Pdf", show_slip_employee_salary_slip_path(@salary_info.employee_id, @salary_info.id, format: "pdf") , class: "glyphicon glyphicon-download-alt" %>
+            <%= link_to " Download Pdf", show_slip_employee_salary_slip_path(@salary_info.employee_id, @salary_info.id, format: "pdf"), class: "glyphicon glyphicon-download-alt" %>
           </div>
         </div>
       </div>

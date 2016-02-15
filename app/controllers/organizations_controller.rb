@@ -1,5 +1,7 @@
 class OrganizationsController < BaseController
 
+  before_action :authenticate_admin, only: [:update, :edit]
+
   include SetLayout
 
   layout :set_layout

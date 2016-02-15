@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem 'activerecord-session_store'
 gem 'will_paginate-bootstrap'
 gem 'tipsy-rails'
 gem 'rails_12factor', group: :production
@@ -11,7 +12,7 @@ gem 'carrierwave'
 gem 'will_paginate'
 gem "prawn"
 gem "prawn-table"
-gem 'devise', '3.5.1'
+gem 'devise', '3.5.5'
 gem 'rails', '4.2.5'
 gem 'pg', '~> 0.15'
 # Use SCSS for stylesheets

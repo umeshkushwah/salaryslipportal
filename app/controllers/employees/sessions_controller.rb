@@ -1,4 +1,7 @@
 class Employees::SessionsController < Devise::SessionsController 
+
+  #skip_before_action :verify_authenticity_token, only: [:destroy]
+  
   layout "application"
   #skip_before_filter  :verify_authenticity_token
   # GET /resource/sign_in
